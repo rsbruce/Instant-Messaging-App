@@ -1,0 +1,14 @@
+{
+    "welcome": {
+        "body": "You joined the room"
+    },
+    "join": {   
+        "body": "%s joined the room"
+    },
+    "rejoin": {
+        "body": "%s rejoined the room"
+    },
+    "leave": {   
+        "body": "%s left the room"
+    }
+}

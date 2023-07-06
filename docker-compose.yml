@@ -1,0 +1,40 @@
+version: '3'
+services:
+  cassandra-db:
+    container_name: im_app_db
+    image: cassandra:latest
+    ports:
+      - "9042:9042"
+
+  go-backend:
+    container_name: im_app_backend
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - cassandra-db
+    environment:
+      - SESSION_KEY=N67o7q7M0RAg0hJXJlhB5opLaoemVXp4
+      - CERT_FILE=./certs/localhost.crt
+      - KEY_FILE=./certs/localhost.key
+      - IM_APP_ENV=DEV
+
+  react-frontend:
+    container_name: im_app_frontend
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - go-backend
+    environment:
+      - SERVE_PORT=3000
+      - SSL_KEY=./certs/localhost.key
+      - SSL_CERT=./certs/localhost.crt
+
+networks:
+  default:
+    name: im_app_network
