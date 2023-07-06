@@ -33,7 +33,7 @@ const ChatHistory = ({socket, clientID, roomID}) => {
     }
     
     const prependHistory = (before) => {
-        fetch(`https://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/history?roomID=${roomID}&before=${before}`).then(
+        fetch(`http://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/history?roomID=${roomID}&before=${before}`).then(
             (response) =>  {
                 if (response.ok) {
                     return response.json()

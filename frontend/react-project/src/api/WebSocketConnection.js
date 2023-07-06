@@ -3,7 +3,7 @@ import * as ENV from '../../env.json'
 class WebSocketConnection {
     constructor(path, onMessageHandler) {
         try {
-            this.socket = new WebSocket(`wss://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/${path}`) 
+            this.socket = new WebSocket(`ws://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/${path}`) 
         } catch (error) {
             console.log(error)
         }

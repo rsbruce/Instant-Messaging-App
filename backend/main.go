@@ -223,7 +223,7 @@ func setupRoutes(r *mux.Router) {
 
 func main() {
 	fmt.Println("Chat App Started")
-	file, err := os.OpenFile("log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+	file, err := os.OpenFile("./log.txt", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -249,7 +249,7 @@ func main() {
 
 	serveAddress := ":" + os.Getenv("SERVE_PORT")
 
-	if err := http.ListenAndServeTLS(serveAddress, os.Getenv("CERT_FILE"), os.Getenv("KEY_FILE"), r); err != nil {
+	if err := http.ListenAndServe(serveAddress, r); err != nil {
 		log.Fatal("ListenAndServe: ", err)
 	}
 }
