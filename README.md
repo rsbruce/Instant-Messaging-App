@@ -20,7 +20,7 @@ Available at [https://im.rsbruce.org](https://im.rsbruce.org/)
 ### Set-up
 - Download the repo
 - Keep ports 3000 and 8080 free, as the frontend and backend use these respectively
-- Run `docker-compose up -d --build` in the project root
+- Run `docker compose up -d --build` in the project root
 - Wait about 30s for the database to initialise properly. If using Docker Desktop this will be when the image stops producing logging statements
 - Go to http://localhost:3000 in your browser window
 - Use an incognito window or different browser to simulate a conversation
