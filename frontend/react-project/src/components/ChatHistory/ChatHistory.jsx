@@ -33,7 +33,8 @@ const ChatHistory = ({socket, clientID, roomID}) => {
     }
     
     const prependHistory = (before) => {
-        fetch(`http://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/history?roomID=${roomID}&before=${before}`).then(
+        let protocol = ENV.IM_APP_ENV == 'PRODUCTION' ? 'https' : 'http'
+        fetch(`${protocol}://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/history?roomID=${roomID}&before=${before}`).then(
             (response) =>  {
                 if (response.ok) {
                     return response.json()

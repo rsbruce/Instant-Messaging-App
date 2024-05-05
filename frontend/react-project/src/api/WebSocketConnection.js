@@ -3,7 +3,8 @@ import * as ENV from '../../env.json'
 class WebSocketConnection {
     constructor(path, onMessageHandler) {
         try {
-            this.socket = new WebSocket(`ws://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/${path}`) 
+            let protocol = ENV.IM_APP_ENV == 'PRODUCTION' ? 'https' : 'http'
+            this.socket = new WebSocket(`${protocol}://${ENV.BACKEND.HOST}:${ENV.BACKEND.PORT}/${path}`) 
         } catch (error) {
             console.log(error)
         }

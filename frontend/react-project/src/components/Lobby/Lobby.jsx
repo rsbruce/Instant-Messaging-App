@@ -21,7 +21,10 @@ const Lobby = () => {
         window.location.href = window.location.protocol + "//" + window.location.host + "/room/" + roomID
     }
 
-    var requestURL = `http://${ENV.BACKEND.HOST}`
+    let protocol = ENV.IM_APP_ENV == 'PRODUCTION' ? 'https' : 'http'
+    
+    var requestURL = `${protocol}://${ENV.BACKEND.HOST}`
+    
     if (ENV.BACKEND.PORT) requestURL += `:${ENV.BACKEND.PORT}`
 
     const parseOptions = (arr) => {
